@@ -60,7 +60,7 @@ class ClfSwitcher(BaseEstimator):
         return self.estimator.score(X, y)
 
 # Load the dataset
-input="../311_data_lat_lon.csv"
+input="../data/311_data_lat_lon.csv"
 df = pd.read_csv(input)
 # filter data to 2023 andd 2024
 df=df[df.year>=2023]
