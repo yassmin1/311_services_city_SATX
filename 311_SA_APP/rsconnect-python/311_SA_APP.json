@@ -1,0 +1,12 @@
+{
+    "https://api.shinyapps.io": {
+        "server_url": "https://api.shinyapps.io",
+        "filename": "C:\\Users\\Rayan\\OneDrive\\GreatLearning_DSBA\\business_analytics\\SanAntonioCity311\\311_SA_APP",
+        "app_url": "https://keep-learning.shinyapps.io/311_sa_app/",
+        "app_id": 11473867,
+        "app_guid": null,
+        "title": "311_SA_app",
+        "app_mode": "python-shiny",
+        "app_store_version": 1
+    }
+}
