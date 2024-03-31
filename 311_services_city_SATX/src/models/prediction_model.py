@@ -12,7 +12,8 @@ model=joblib.load('artifacts/model.pkl')
 chosen_threshold =0.14
 ###
 def main(): 
-    print(f'{X_test}')   
+    print(f'{X_test.shape}')
+    print(f'{X_test}')    
     y_pred_proba_test = model.predict_proba(X_test)[:, 1]
     predicted_classes = (y_pred_proba_test >= chosen_threshold).astype(int)
     print(f'the probability value: {y_pred_proba_test}')
