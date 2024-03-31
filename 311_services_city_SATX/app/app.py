@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd 
 #import os
-#os.chdir("C:\Users\Rayan\OneDrive\GreatLearning_DSBA\business_analytics\SanAntonioCity311")
+#os.chdir("C:\Users\Rayan\OneDrive\Documents\GitHub\311_services_city_SATX\311_services_city_SATX")
 
 # Load the model
 delay_clf = joblib.load(open('artifacts/model.pkl','rb'))
