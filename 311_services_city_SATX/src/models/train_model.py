@@ -21,12 +21,12 @@ def save_pipeline(*, pipeline_to_persist: Pipeline) -> None:
     called, and we know exactly how it was built.
     """
     # Prepare versioned save file name
-    #save_file_name = f"{config.app_config.pipeline_save_file}{_version}.pkl"
+    save_file_name = f"{config.app_config.pipeline_save_file}{_version}.pkl"
     save_file_name='model.pkl'
     TRAINED_MODEL_DIR='../../models'
     save_path = TRAINED_MODEL_DIR / save_file_name
 
-    #remove_old_pipelines(files_to_keep=[save_file_name])
+    remove_old_pipelines(files_to_keep=[save_file_name])
     joblib.dump(pipeline_to_persist, save_path)
 
 #---------------
