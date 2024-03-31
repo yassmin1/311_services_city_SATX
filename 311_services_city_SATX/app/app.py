@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd 
 #import os
-#os.chdir("C:\\Users\\amanr\\OneDrive\\Desktop\\streamlit-spam-detector-main\\SSD")
+#os.chdir("C:\Users\Rayan\OneDrive\GreatLearning_DSBA\business_analytics\SanAntonioCity311")
 
 # Load the model
 delay_clf = joblib.load(open('artifacts/model.pkl','rb'))
