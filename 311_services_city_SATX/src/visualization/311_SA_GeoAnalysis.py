@@ -5,9 +5,9 @@
 # # Mapping
 
 # %%
-!apt install python3-folium  # For folium and it's necessary to plot the gpd.explore
-!pip install descartes
-!pip install contextily
+#!apt install python3-folium  # For folium and it's necessary to plot the gpd.explore
+#!pip install descartes
+#pip install contextily
 
 
 # %%
@@ -22,11 +22,14 @@ import contextily as cx
 from matplotlib.colors import rgb2hex,to_hex,ListedColormap,cnames
 import seaborn as sns
 from sklearn.utils import resample
-
+import pandas as pd 
+import matplotlib.pyplot as plt
+#
+input_file=r'C:\Users\Rayan\OneDrive\Documents\GitHub\311_services_city_SATX\311_services_city_SATX\src\data\311_clean.csv'
 
 
 # %%
-df=pd.read_csv('/content/drive/MyDrive/SanAntonioCity311/311_clean.csv')
+df=pd.read_csv(input_file)
 
 # %%
 df[['YCOORD','XCOORD']].head()
@@ -65,8 +68,8 @@ df[['lat', 'lon','Category']]
 df['month']=pd.to_datetime(df['OPENEDDATETIME']).dt.month.astype(object)
 df['year']=pd.to_datetime(df['OPENEDDATETIME']).dt.year.astype(object)
 df['day_of_week']=pd.to_datetime(df['OPENEDDATETIME']).dt.dayofweek.astype(object)
-output="/content/drive/MyDrive/SanAntonioCity311/311_data_lat_lon.csv"
-df.to_csv(output)
+#output=r"C:\Users\Rayan\OneDrive\Documents\GitHub\311_services_city_SATX\311_services_city_SATX\src\data\SanAntonioCity311\311_data_lat_lon.csv"
+#df.to_csv(output)
 
 # %%
 #Mapping
@@ -93,6 +96,8 @@ print(gdf1.crs)
 # Set the basemap CRS to WGS84
 ax=gdf.plot(column='Category', categorical=True, legend=True,figsize=(10, 10),marker= '.',markersize=5,alpha=0.7 )
 cx.add_basemap(ax=ax,crs="epsg:4326")
+plt.saveas('allcategories.jpg')
+
 
 
 # %% [markdown]
@@ -103,6 +108,7 @@ cat_n=gdf1["Category"].unique().tolist()
 print(cat_n)
 color_map=dict(zip(cat_n,sns.color_palette('husl', n_colors=len(cat_n))))
 gdf1= gdf1.assign(color=df['Category'].map(color_map).map(rgb2hex))
+
 
 
 # %%
@@ -132,11 +138,11 @@ folium.TileLayer("CartoDB positron", show=False).add_to(m)
 folium.TileLayer("OpenStreetMap").add_to(m)
 folium.LayerControl().add_to(m)
 # and then we write the map to disk
-#m.save('my_map.html')
+m.save('src\\visualization\categoriesSA.html')
 
 # then open it
 #webbrowser.open(r'/content/my_map.html')
-m
+#m
 
 
 
@@ -157,8 +163,8 @@ m=folium.Map([YY,XX])
 HeatMap(data=df[['lat', 'lon']].dropna().values.tolist(),radius=15,overlay=False,min_opacity=0.1).add_to(folium.FeatureGroup(name='Heat Map').add_to(m))
 #HeatMap(data=df[['lat', 'lon', 'time_interval']].dropna().values.tolist(),radius=20,overlay=False,min_opacity=0.1).add_to(folium.FeatureGroup(name='Heat Map').add_to(m))
 folium.LayerControl().add_to(m)
-m.save("SAN_desity.html")
-m
+m.save("src\\visualization\SAN_density.html")
+#m
 
 
 
